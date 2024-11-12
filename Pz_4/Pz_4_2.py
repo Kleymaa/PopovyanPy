@@ -9,6 +9,7 @@ try:
     K = 1
     while K*K <= N:
         K += 1
-        K -= 1
-        print("K = {0}, K^2 = {1}, (K+1)^2 = {2}".format(K,K**2,(K+1)**2))
-except V
+    K -= 1
+    print("K = {0}, K^2 = {1}, (K+1)^2 = {2}".format(K,K**2,(K+1)**2))
+except ValueError:
+    print("Ошибка: введено некорректное значение.")
