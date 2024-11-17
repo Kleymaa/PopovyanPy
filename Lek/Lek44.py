@@ -11,6 +11,7 @@
 
 
 
+
 # def my_sum(a,b):
 #     if a > b:
 #         return a + b
@@ -21,6 +22,7 @@
 # num1 = int(input("Введи 1 число:"))
 # num2 = int(input("Введи 2 число:"))
 # print('Результат = ', my_sum(num1,num2))
+
 
 
 
@@ -40,6 +42,7 @@
 
 
 
+
 # var1 = 'Global'
 #
 #
@@ -53,6 +56,7 @@
 # print(var1)
 # foo()
 # print(var2)
+
 
 
 
