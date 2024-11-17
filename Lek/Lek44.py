@@ -8,6 +8,9 @@
 # my_def(a, b)
 
 
+
+
+
 # def my_sum(a,b):
 #     if a > b:
 #         return a + b
@@ -20,6 +23,9 @@
 # print('Результат = ', my_sum(num1,num2))
 
 
+
+
+
 # def my_sum(a,b):
 #     return a + b, a * b
 #
@@ -29,6 +35,9 @@
 # s, d = my_sum(num1,num2)
 # print('Результат результат суммы= ', s )
 # print('Результат произведения суммы= ', d )
+
+
+
 
 
 # var1 = 'Global'
@@ -44,6 +53,9 @@
 # print(var1)
 # foo()
 # print(var2)
+
+
+
 
 
 # def my_def(*args):
