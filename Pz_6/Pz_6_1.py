@@ -24,9 +24,9 @@ def my_def(lst):
 
 
 #Вывод: 2
-lst = [2, 4, 6, 8, 10]
-print(my_def(lst))
+N = [2, 4, 6, 8, 10]
+print(my_def(N))
 
-lst = [1, 3, 5, 9]
+N = [1, 3, 5, 9]
 #Вывод: 0
-print(my_def(lst))
+print(my_def(N))
