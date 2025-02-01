@@ -4,20 +4,40 @@
 
 
 
-def my_def(A):
-    try:
-        B = eval(A)
-        return B
-    #Обработка исключения
-    except ValueError:
-        #Вывод
-        print("Ошибка: введено некорректное значение")
-        #Вернуть ничего
+def evaluate(expression):
+    total = 0
+    current_number = ""
+    last_operator = "+"
 
-#Пример:
-B = "4+7-2-8"
-D = my_def(B)
-if B is not None:
-    print(D)
-else:
-    print("Не удалось вычислить выражение.")
+    for i, char in enumerate(expression):
+        if char.isdigit() or (char == '-' and (i == 0 or expression[i - 1] in "+-")):
+            current_number += char
+        elif char in "+-":
+            if current_number == "":
+                raise ValueError("Некорректное выражение!")
+
+            number = int(current_number)
+            if last_operator == "+":
+                total += number
+            elif last_operator == "-":
+                total -= number
+
+            current_number = ""
+            last_operator = char
+        else:
+            raise ValueError("Некорректное выражение!")
+
+    if current_number != "":
+        number = int(current_number)
+        if last_operator == "+":
+            total += number
+        elif last_operator == "-":
+            total -= number
+    else:
+        raise ValueError("Некорректное выражение!")
+
+    return total
+
+
+expression = input('Введите выражение: ')
+print('Результат:', evaluate(expression))
