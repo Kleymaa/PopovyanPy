@@ -29,3 +29,4 @@ lowered_text = text.lower()
 with open('poem_lower_case.txt', 'w', encoding='utf-8') as output_file:
     output_file.write(lowered_text)
 print("\nПреобразованный текст сохранён в файл poem_lower_case.txt.")
+#
