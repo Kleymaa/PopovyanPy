@@ -61,3 +61,4 @@ with open('result.txt', 'w', encoding='utf-8') as result_file:
     result_file.write(f"Нечетные элементы: {', '.join(map(str, odd_elements))}\n")
     result_file.write(f"Количество нечетных элементов: {count_odd}\n")
     result_file.write(f"Сумма нечетных элементов: {sum_odd}\n")
+#
