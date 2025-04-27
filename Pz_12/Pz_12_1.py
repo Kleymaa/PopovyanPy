@@ -9,8 +9,8 @@ def sum_last_half(sequence):
     last_half = sequence[half_length:]
     return reduce(lambda x, y: x + y, last_half)
 
-user_input = input("Введите любые числа через пробел: ")
-numbers = list(map(int, user_input.split()))
+user = input("Введите любые числа через пробел: ")
+numbers = list(map(int, user.split()))
 result = sum_last_half(numbers)
 print("Сумма второй половины (введённый список):", result)
 
