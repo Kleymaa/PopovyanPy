@@ -18,7 +18,7 @@ random_result = sum_last_half(random_numbers)
 print("\nСлучайный список:", random_numbers)
 print("Сумма второй половины (случайный список):", random_result)
 
-#Обработка пользовательского 
+#Обработка  
 if user_input == "":
     print("\nИспользуется случайный список, так как ввод пуст.")
 else:
