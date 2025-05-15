@@ -1,13 +1,20 @@
 #В двумерном списке все элементы, не лежащие на главной диагонали увеличить в 2
 #раза.
 
-matrix = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
-]
+import random
 
-Aboba = list(map(lambda a: list(map(lambda b: matrix[a][b] * 2 if a != b else matrix[a][b], range(len(matrix[a])))), range(len(matrix))))
+randomed = [[random.randint(-5, 5) for i in range(3)] for i in range(3)]
 
-for row in Aboba:
-    print(row)
+print("Исходная матрица")
+for i in randomed:
+    print(i)
+
+#Увеличиваем, которые не на главной в 2 раза
+for i in range(len(randomed)):
+    for j in range(len(randomed[i])):
+        if i != j:  #Элемент не на главной диагонали
+            randomed[i][j] *= 2
+
+print("Конечная матрица")
+for i in randomed:
+    print(i)
