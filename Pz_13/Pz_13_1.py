@@ -1,25 +1,18 @@
 #В двумерном списке найти максимальный положительный элемент, кратный 4.
 
-from functools import reduce
+import random
 
-def find_max(matrix):
-    # Преобразуем матрицу в плоский список
-    flattened = reduce(lambda acc, row: acc + row, matrix, [])
+# Создаем двумерный список (матрицу) случайных чисел
+randomed = [[random.randint(-20, 20) for i in range(4)] for j in range(4)]
 
-    # Филь. + элем. кратные 4
-    filtered = filter(lambda x: x > 0 and x % 4 == 0, flattened)
+print("Исходная матрица:")
+for row in randomed:
+    print(row)
 
-    #Поиск макс. элемент
-    try:
-        return reduce(lambda a, b: a if a > b else b, filtered)
-    except TypeError:
-        return None
+elements = [num for row in randomed for num in row if num > 0 and num % 4 == 0]
 
-matrix = [
-    [1, -8, 12],
-    [4, 16, -3],
-    [0, 5, 24]
-]
-
-result = find_max(matrix)
-print(result)
+if not elements:
+    print("В матрице нет положительных элементов, кратных 4.")
+else:
+    max_element = max(elements)
+    print(f"Максимальный положительный элемент, кратный 4: {max_element}")
