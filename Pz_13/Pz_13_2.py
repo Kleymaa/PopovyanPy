@@ -9,10 +9,10 @@ print("Исходная матрица:")
 for i in randomed:
     print(i)
 
-for i in range(len(randomed)):
-    for j in range(len(randomed[i])):
-        if i != j:  
-            randomed[i][j] *= 2
+randomed = list(map(lambda a:
+                    [x * 2 if a[0] != j else x
+                    for j, x in enumerate(a[1])],
+                   enumerate(randomed)))
 
 print("Конечная матрица:")
 for i in randomed:
