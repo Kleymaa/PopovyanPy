@@ -9,10 +9,9 @@ print("Исходная матрица:")
 for i in randomed:
     print(i)
 
-#Увеличиваем, которые не на главной в 2 раза
 for i in range(len(randomed)):
     for j in range(len(randomed[i])):
-        if i != j:  #Элемент не на главной диагонали
+        if i != j:  
             randomed[i][j] *= 2
 
 print("Конечная матрица:")
