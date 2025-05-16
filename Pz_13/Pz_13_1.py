@@ -2,7 +2,6 @@
 
 import random
 
-#Создаем матрицу с помощью рандом
 randomed = [[random.randint(-20, 20) for i in range(4)] for j in range(4)]
 
 print("Исходная матрица:")
