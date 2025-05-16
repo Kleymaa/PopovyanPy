@@ -3,9 +3,9 @@
 
 import random
 
-randomed = [[random.randint(-5, 5) for i in range(3)] for i in range(3)]
+randomed = [[random.randint(-5, 5) for i in range(3)] for j in range(3)]
 
-print("Исходная матрица")
+print("Исходная матрица:")
 for i in randomed:
     print(i)
 
@@ -15,6 +15,6 @@ for i in range(len(randomed)):
         if i != j:  #Элемент не на главной диагонали
             randomed[i][j] *= 2
 
-print("Конечная матрица")
+print("Конечная матрица:")
 for i in randomed:
     print(i)
