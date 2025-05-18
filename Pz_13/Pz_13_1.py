@@ -1,18 +1,17 @@
 #В двумерном списке найти максимальный положительный элемент, кратный 4.
 
-from itertools import chain
-def find_4(matrix):
-    # Преобразуем матрицу в плоский список
-    flattened = chain.from_iterable(matrix)
-    # Фильтруем элементы: положительные и кратные 4
-    filtered = filter(lambda x: x > 0 and x % 4 == 0, flattened)
-    # Находим максимальный элемент (если таких нет, вернётся None)
-    return max(filtered, default=None)
+import random
 
-matrix = [
-    [1, -8, 12],
-    [5, 16, 0],
-    [9, -4, 8]
-]
-result = find_4(matrix)
-print(result)
+randomed = [[random.randint(-20, 20) for i in range(4)] for j in range(4)]
+
+print("Исходная матрица:")
+for row in randomed:
+    print(row)
+
+elements = [num for row in randomed for num in row if num > 0 and num % 4 == 0]
+
+if not elements:
+    print("В матрице нет положительных элементов, кратных 4.")
+else:
+    max_element = max(elements)
+    print(f"Максимальный положительный элемент, кратный 4: {max_element}")

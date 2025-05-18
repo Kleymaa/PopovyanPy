@@ -4,18 +4,19 @@
 from functools import reduce
 import random
 
-def sum_last_half(sequence):
-    half_length = len(sequence) // 2
-    last_half = sequence[half_length:]
+def sum_last_half(Aboba):
+    half_length = len(Aboba) // 2
+    last_half = Aboba[half_length:]
     return reduce(lambda x, y: x + y, last_half)
 
-user_input = input("Введите любые числа через пробел: ")
-numbers = list(map(int, user_input.split()))
-result = sum_last_half(numbers)
-print("Сумма второй половины (введённый список):", result)
+#Запрос
+n = int(input("Введите количество целых элементов в последовательности: "))
 
-random_length = random.randint(5, 10)
-random_numbers = [random.randint(1, 100) for _ in range(random_length)]
-random_result = sum_last_half(random_numbers)
-print("\nСлучайный список:", random_numbers)
-print("Сумма второй половины (случайный список):", random_result)
+#Генерирация
+Aboba = [random.randint(1, 100) for _ in range(n)]
+
+print("Сгенерированная последовательность:", Aboba)
+
+#Вычисляем
+result = sum_last_half(Aboba)
+print("Сумма элементов во второй половине последовательности:", result)
