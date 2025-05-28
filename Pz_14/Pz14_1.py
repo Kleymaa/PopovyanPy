@@ -4,32 +4,58 @@
 #файле.
 
 import re
+from functools import reduce
 
 
-with open('ip_address.txt', 'r') as file:
-    lines = file.readlines()
+def read_file(filename):
+    with open(filename, 'r', encoding='utf-8') as file:
+        return file.read()
 
-with open('nonzero_octets.txt', 'w') as nonzero_file, \
-        open('other_ips.txt', 'w') as other_file:
-    nonzero = 0
-    other = 0
-    for line in lines:
-        #Ищем IP-адреса в строке
-        ip_match = re.search(r'\b(\d{1,3})\.(\d{1,3})\.\d{1,3}\.\d{1,3}\b', line)
-        if ip_match:
-            first = int(ip_match.group(1))
-            second = int(ip_match.group(2))
 
-            #Проверяем условие для ненулевых октетов
-            if first != 0 and second != 0:
-                nonzero_file.write(line)
-                nonzero += 1
-            else:
-                other_file.write(line)
-                other += 1
-        else:
-            #Если строка не содержит IP, записываем в other
-            other_file.write(line)
-            other += 1
-print(f"Количество строк в nonzero_octets.txt: {nonzero}")
-print(f"Количество строк в other_ips.txt: {other}")
+def extract_reserved_blocks(text):
+    pattern = r'Зарезервированные адреса.*?(Подсеть.*?Назначение.*?)(?:\n\s*\n|\Z)'
+    match = re.search(pattern, text, re.DOTALL)
+    if not match:
+        return []
+    table = match.group(1)
+    rows = re.findall(r'(\d+\.\d+\.\d+\.\d+/\d+).*?([^\n]+)', table)
+    return rows
+
+
+def split_rows(rows):
+    def has_non_zero_first_two_octets(ip):
+        octets = list(map(int, ip.split('/')[0].split('.')[:2]))
+        return octets[0] != 0 and octets[1] != 0
+
+    group1 = list(filter(lambda row: has_non_zero_first_two_octets(row[0]), rows))
+    group2 = list(filter(lambda row: not has_non_zero_first_two_octets(row[0]), rows))
+    return group1, group2
+
+
+def write_to_file(filename, rows):
+    with open(filename, 'w', encoding='utf-8') as file:
+        for ip, desc in rows:
+            file.write(f"{ip}\t{desc}\n")
+
+
+def count_rows(rows):
+    return len(rows)
+
+
+def main():
+    content = read_file('ip_address.txt')
+    reserved_blocks = extract_reserved_blocks(content)
+    group1, group2 = split_rows(reserved_blocks)
+
+    write_to_file('non_zero_octets.txt', group1)
+    write_to_file('other_octets.txt', group2)
+
+    count_group1 = count_rows(group1)
+    count_group2 = count_rows(group2)
+
+    print(f"Количество строк в non_zero_octets.txt: {count_group1}")
+    print(f"Количество строк в other_octets.txt: {count_group2}")
+
+
+if __name__ == "__main__":
+    main()
